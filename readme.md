@@ -64,7 +64,7 @@ Since Argo consists of just a single header file without any external dependenci
 
 For those wanting to start straight away: clone this repository (or if you're old school you can [download an archive](...) directly). Next, add the `argo/single_include` directory as an include directory to your compiler flags. That's it! You can now include Argo in your C++ projects:
 
-```
+```C++
 #include "argo/Argo.hpp"
 ```
 
@@ -74,14 +74,14 @@ For those wanting to start straight away: clone this repository (or if you're ol
 
 When adding the Argo repository as a Git submodule, it suffices to add the Argo repository as a subdirectory in your project:
 
-```
+```CMake
 add_subdirectory(argo)
 ```
 This will create the target `Argo` as an `interface` library.
 
 That's it! You can now link your targets against `Argo`. For example:
 
-```
+```CMake
 target_link_libraries(my-app PRIVATE Argo)
 ```
 

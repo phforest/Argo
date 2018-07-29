@@ -7,10 +7,12 @@ Argo is a single header C++11 library for argument parsing. It is light-weight, 
 Out-of-the-box support for:
 
 * Long-hand and short-hand notation
+* Type safety
 * Required arguments
 * Optional arguments
 * Automatic short-hand generation and guessing of undefined short-hands
 * Automatic generation of `--help`, `--version` options
+* Automatic type conversions for basic types
 * Grouping of options, including inclusive and exclusive groups
 * Cardinality: fixed number, one or more, zero or more
 * Beautiful output (__`man`__-style)

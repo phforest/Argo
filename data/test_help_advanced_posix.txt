@@ -1,0 +1,61 @@
+
+                                 MY AWESOME APP
+
+[1mNAME
+[0m    awesome-app -- Brief description of this app.
+
+[1mVERSION
+[0m    Release:  1.0
+    Revision: sd45f7
+
+[1mUSAGE
+[0m    awesome-app --input --output (--help) (--version) <Algorithm>
+
+    [4mNote:[0m
+    Groups are indicated with <>
+    Optional groups and options are indicated with ()
+
+[1mDESCRIPTION
+[0m    Every app can have both a short and long description. Whereas the short
+    description should give the most basic information, this section can go into
+    more detail. In fact, I'm just rambling here to get some line wrapping
+    action going.
+
+    The groups are as follows:
+
+    [1mAlgorithm[0m                                     [required][mutually inclusive]
+
+        Group Bar Algorithm
+        Group Foo Algorithm
+
+    [1mBar Algorithm[0m                                           [mutually exclusive]
+
+        --bar
+        --bar-param
+
+    [1mFoo Algorithm[0m                                           [mutually exclusive]
+
+        --foo
+        --foo-param
+
+    The options are as follows:
+
+    [1m--bar[0m                                                         [no arguments]
+
+    [1m--bar-param[0m                                                     [1 argument]
+
+    [1m--foo[0m                                                         [no arguments]
+
+    [1m--foo-param[0m                                                     [1 argument]
+
+    [1m--help (-h)[0m                                                   [no arguments]
+        Prints out the help.
+
+    [1m--input[0m                                    [required][one or more arguments]
+
+    [1m--output[0m                                              [required][1 argument]
+
+    [1m--version (-v)[0m                                                [no arguments]
+        Prints out the version information.
+
+

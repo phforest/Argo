@@ -1,0 +1,7 @@
+-i input_file.naft
+    # This is a comment
+  -o output_file.wav
+
+
+
+ --a-very-long-option-this-is

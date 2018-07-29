@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 }
 ```
 
-Results in the following interaction:
+Results in the following program:
 
 ![logo](data/demo.gif)
 
@@ -111,8 +111,7 @@ ExternalProject_Add(Argo
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
-    LOG_DOWNLOAD ON
-)
+    LOG_DOWNLOAD ON)
 ExternalProject_Get_Property(Argo SOURCE_DIR)
 set(ARGO_ROOT ${SOURCE_DIR})
 

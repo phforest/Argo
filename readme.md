@@ -70,7 +70,7 @@ For those wanting to start straight away: clone this repository (or if you're ol
 #include "argo/Argo.hpp"
 ```
 
-### Option 2: Integration in CMake
+### Option 2: CMake
 
 #### Using Git submodules
 

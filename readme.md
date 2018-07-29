@@ -115,7 +115,7 @@ ExternalProject_Add(Argo
 ExternalProject_Get_Property(Argo SOURCE_DIR)
 set(ARGO_ROOT ${SOURCE_DIR})
 
-add_executable(app ${CMAKE_CURRENT_LIST_DIR}/src/main.cpp)
+add_executable(app main.cpp)
 add_dependencies(app Argo)
 #set_target_properties(app PROPERTIES CXX_STANDARD 11) #Your project should be C++ >= 11
 target_include_directories(app PRIVATE ${ARGO_ROOT}/single_include)

@@ -35,9 +35,9 @@ int main(int argc, char **argv)
 {
     unsigned int max;
     
-    argo::Arguments args;
-    argo::handler::Option option{"--number"}.help("Numbers to count");
-    option.required().action(argo::action::store(max));
+    Arguments args;
+    handler::Option option{"--number"}.help("Numbers to count");
+    option.required().action(action::store(max));
     args.add(option);
     const auto result = args.parse(argc, argv);
     if (!result.success)

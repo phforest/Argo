@@ -57,6 +57,9 @@ Results in the following interaction:
 
 ![logo](data/demo.gif)
 
+## Requirements
+
+A modern C++11 compliant compiler.
 
 ## Integration
 

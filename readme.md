@@ -17,7 +17,7 @@ Out-of-the-box support for:
 
 A basic example:
 
-```
+```C++
 #include "argo/Argo.hpp"
 #include <iostream>
 

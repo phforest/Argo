@@ -4,6 +4,10 @@ import pathlib
 import re
 import shutil
 import sys
+if __package__ is None or __package__ == '':
+    from docker import tasks as docker
+else:
+    from .docker import tasks as docker
 
 THIS_DIR = pathlib.Path(__file__).parent.resolve()
 LIBRARY_DIR = pathlib.Path(THIS_DIR, 'library')
@@ -94,9 +98,9 @@ def config(context, debug = True, rtc = False, debug_info = True, release = Fals
 @task
 def publish(context, verbose = False):
     """
-    Publishes the library as a single include library.
+    Publishes all deliverables: single include, forwarding header, archive.
     """
-    #Single include library
+    #Single include
     fn_argo = pathlib.Path(THIS_DIR, 'single_include', 'argo', 'Argo.hpp')
     def add_license():
         with open(fn_argo, 'w') as fout:
@@ -149,18 +153,18 @@ def publish(context, verbose = False):
     add(fn_sources)
     fn_headers = [fn for fn in pathlib.Path(LIBRARY_DIR, 'inc', 'argo').glob('**/*.hpp')]
     add(fn_headers)
-    print("Published {} files into the single include header {}".format(len(fn_processed), fn_argo))
+    print("Published {} files to the single include header {}".format(len(fn_processed), fn_argo))
 
-    #The library's forwarding header
+    #Forwarding header
     fn_fwd = pathlib.Path(LIBRARY_DIR, 'inc', 'argo', 'Argo.hpp')
     with open(fn_fwd, 'w') as fout:
         def blacklisted(fn):
             fn = str(fn)
-            return 'details' in fn or 'utility' in fn or 'Argo' in fn
+            return 'details' in fn or 'utility' in fn or 'Argo.hpp' in fn
         prefix = str(pathlib.Path(LIBRARY_DIR, 'inc')) + '/'
         includes = [str(fn).replace(prefix, '') for fn in fn_headers if not blacklisted(fn)]
         fout.writelines(['#include "{}"\n'.format(include) for include in includes])
-    print("Updated {} includes in forwarding header {}".format(len(includes), fn_fwd))
+    print("Published {} includes to the forwarding header {}".format(len(includes), fn_fwd))
 
 def glob_build_tasks():
     configs = [str(dir.stem) for dir in BUILDS_DIR.glob('*') if dir.is_dir()]
@@ -226,4 +230,5 @@ ns.add_task(remove_{func_name})
 
 ns = Collection(config, publish)
 glob_build_tasks()
+ns.add_collection(Collection.from_module(docker, 'docker'))
 

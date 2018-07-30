@@ -36,7 +36,8 @@ int main(int argc, char **argv)
     unsigned int max;
     
     Arguments args;
-    handler::Option option{"--number"}.help("Numbers to count");
+    handler::Option option{"--number"};
+    option.help("Numbers to count");
     option.required().action(action::store(max));
     args.add(option);
     const auto result = args.parse(argc, argv);

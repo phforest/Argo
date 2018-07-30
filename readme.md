@@ -62,6 +62,18 @@ Results in the following program:
 
 A modern C++11 compliant compiler.
 
+The library is tested on the following platforms:
+
+* macOS 10.13 / Apple LLVM version 9.1.0
+* Centos-7.5 / Gcc-4.8.5
+* Debian-8.11 / Gcc-4.9.2
+* Ubuntu-14.04 / Gcc-4.8.4
+* Ubuntu-16.04 / Gcc-5.4.0
+* Ubuntu-18.04 / Gcc-7.3.0
+* Ubuntu-18.10 / Gcc-8.2.0
+
+__Note__ Automatic testing on Windows will be added shortly.
+
 ## Integration
 
 Since Argo consists of just a single header file without any external dependencies, no special building or installation steps are required. Simply make the header file available to your project.

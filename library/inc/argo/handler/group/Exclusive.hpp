@@ -24,7 +24,11 @@ namespace argo { namespace handler { namespace group {
             ptr->is_required_ = is_required_;
             ptr->handlers_ = handlers_;
             ptr->previous_option_name_ = previous_option_name_;
+#if ARGO_TOOLSET_COMPILER_GCC_OLD
+            return std::move(ptr);
+#else
             return ptr;
+#endif
         }
         virtual bool recognizes(Context &context, const std::string &raw_arg) override 
         {

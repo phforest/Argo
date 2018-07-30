@@ -1,6 +1,7 @@
 #ifndef HEADER_argo_handler_group_IGroup_hpp_INCLUDE_GUARD
 #define HEADER_argo_handler_group_IGroup_hpp_INCLUDE_GUARD
 
+#include "argo/details/config/toolset.hpp"
 #include "argo/Handlers.hpp"
 #include "argo/handler/Option.hpp"
 

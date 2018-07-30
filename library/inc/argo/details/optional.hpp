@@ -3,6 +3,7 @@
 
 #include <array>
 #include <cassert>
+#include <cstddef>
 #include <type_traits>
 
 namespace argo { namespace details {
@@ -99,7 +100,7 @@ namespace argo { namespace details {
 
         union Storage
         {
-            std::max_align_t align_{};
+            max_align_t align_{};
             Block block;
         };
         Storage storage_;

@@ -5,44 +5,29 @@
 #if defined(__clang__)
 #define ARGO_TOOLSET_COMPILER "clang"
 #define ARGO_TOOLSET_COMPILER_CLANG 1
+#define ARGO_TOOLSET_COMPILER_VERSION_MAJOR __clang_major__
+#define ARGO_TOOLSET_COMPILER_VERSION_MINOR __clang_minor__
+#define ARGO_TOOLSET_COMPILER_VERSION_PATCH __clang_patchlevel__
 #elif defined(__GNUC__)
 #define ARGO_TOOLSET_COMPILER "gcc"
 #define ARGO_TOOLSET_COMPILER_GCC 1
+#define ARGO_TOOLSET_COMPILER_VERSION_MAJOR __GNUC__
+#define ARGO_TOOLSET_COMPILER_VERSION_MINOR __GNUC_MINOR__
+#define ARGO_TOOLSET_COMPILER_VERSION_PATCH __GNUC_PATCHLEVEL__
+#if ARGO_TOOLSET_COMPILER_VERSION_MAJOR < 5
+#define ARGO_TOOLSET_COMPILER_GCC_OLD 1
+#endif
 #elif defined(_MSC_VER)
 #define ARGO_TOOLSET_COMPILER "msvc"
 #define ARGO_TOOLSET_COMPILER_MSVC 1
 #if _MSC_VER >= 1910 // (MSVC++ 15.0 - Visual Studio 2017)
-#define ARGO_TOOLSET_COMPILER_MSVC_1910 1
 #define ARGO_TOOLSET_COMPILER_MSVC_VS_2017 1
 #elif _MSC_VER == 1900 // (MSVC++ 14.0 - Visual Studio 2015)
-#define ARGO_TOOLSET_COMPILER_MSVC_1900 1
 #define ARGO_TOOLSET_COMPILER_MSVC_VS_2015 1
 #elif _MSC_VER == 1800 // (MSVC++ 12.0 - Visual Studio 2013)
-#define ARGO_TOOLSET_COMPILER_MSVC_1800 1
 #define ARGO_TOOLSET_COMPILER_MSVC_VS_2013 1
-#elif _MSC_VER == 1700 // (MSVC++ 11.0 - Visual Studio 2012)
-#define ARGO_TOOLSET_COMPILER_MSVC_1700 1
-#define ARGO_TOOLSET_COMPILER_MSVC_VS_2012 1
-#elif _MSC_VER == 1600 // (MSVC++ 10.0 - Visual Studio 2010)
-#define ARGO_TOOLSET_COMPILER_MSVC_1600 1
-#define ARGO_TOOLSET_COMPILER_MSVC_VS_2010 1
-#elif _MSC_VER == 1500 // (MSVC++  9.0 - Visual Studio 2008)
-#define ARGO_TOOLSET_COMPILER_MSVC_1500 1
-#define ARGO_TOOLSET_COMPILER_MSVC_VS_2008 1
-#elif _MSC_VER == 1400 // (MSVC++  8.0 - Visual Studio 2005)
-#define ARGO_TOOLSET_COMPILER_MSVC_1400 1
-#define ARGO_TOOLSET_COMPILER_MSVC_VS_2005 1
-#elif _MSC_VER == 1310 // (MSVC++  7.1 - Visual Studio 2003)
-#define ARGO_TOOLSET_COMPILER_MSVC_1310 1
-#define ARGO_TOOLSET_COMPILER_MSVC_VS_2003 1
-#elif _MSC_VER == 1300 // (MSVC++  7.0)
-#define ARGO_TOOLSET_COMPILER_MSVC_1300 1
-#elif _MSC_VER == 1200 // (MSVC++  6.0)
-#define ARGO_TOOLSET_COMPILER_MSVC_1200 1
-#elif _MSC_VER == 1100 // (MSVC++  5.0)
-#define ARGO_TOOLSET_COMPILER_MSVC_1100 1
 #else
-#error "Unsupported toolset: unexpected _MSC_VER value"
+#error "Unsupported toolset: unsupported Visual Studio version"
 #endif
 #else
 #error "Unsupported toolset: unknown compiler"

@@ -23,7 +23,11 @@ namespace argo { namespace handler { namespace group {
             ptr->help_ = help_;
             ptr->is_required_ = is_required_;
             ptr->handlers_ = handlers_;
+#if ARGO_TOOLSET_COMPILER_GCC_OLD
+            return std::move(ptr);
+#else
             return ptr;
+#endif
         }
         virtual bool recognizes(Context &context, const std::string &raw_arg) override { return std::any_of(RANGE(handlers_), [&](handler::IHandler &handler){ return handler.can_handle(context, raw_arg); }); }
         virtual bool is_satisfied(Context &context) const override

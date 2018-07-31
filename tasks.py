@@ -6,8 +6,10 @@ import shutil
 import sys
 if __package__ is None or __package__ == '':
     from docker import tasks as docker
+    from docs import tasks as docs
 else:
     from .docker import tasks as docker
+    from .docs import tasks as docs
 
 THIS_DIR = pathlib.Path(__file__).parent.resolve()
 LIBRARY_DIR = pathlib.Path(THIS_DIR, 'library')
@@ -231,4 +233,5 @@ ns.add_task(remove_{func_name})
 ns = Collection(config, publish)
 glob_build_tasks()
 ns.add_collection(Collection.from_module(docker, 'docker'))
+ns.add_collection(Collection.from_module(docs, 'docs'))
 

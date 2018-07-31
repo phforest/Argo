@@ -13,4 +13,4 @@ Argo is a single header C++11 library for argument parsing. It is light-weight, 
 * Cardinality: fixed number, one or more, zero or more
 * Beautiful output (__`man`__-style)
 
-[Get started right away!](02-basic-usage/)
+[Get started right away!](01-installation/)

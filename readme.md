@@ -1,10 +1,8 @@
-![logo](data/argo.png)
-
-# What is Argo?
+![](docs/argo.png)
 
 Argo is a single header C++11 library for argument parsing. It is light-weight, flexible, and easy-to-use, and has out-of-the-box support for:
 
-* Long-hand and short-hand notation
+* Long-hand (`--foo`) and short-hand notation (`-f`)
 * Type safety
 * Required arguments
 * Optional arguments
@@ -50,41 +48,35 @@ int main(int argc, char **argv)
 }
 ```
 
-![logo](data/demo.gif)
+![](docs/demo.gif)
 
-## Requirements
+# Installation
 
-A modern C++11 compliant compiler.
+Argo consists of just a single header file without any external dependencies, __no building or installation is required__. Simply make the header file available to your project.
 
-The library is tested on the following platforms:
+## Basic integration
 
-* macOS 10.13 / Clang (Apple LLVM version 9.1.0)
-* CentOS-7.5 / GCC-4.8.5
-* Debian-8.11 / GCC-4.9.2
-* Ubuntu-14.04 / GCC-4.8.4
-* Ubuntu-16.04 / GCC-5.4.0
-* Ubuntu-18.04 / GCC-7.3.0
-* Ubuntu-18.10 / GCC-8.2.0
+Clone the repository:
 
-__Note__ Automatic testing on Windows will be added shortly.
+```bash
+git clone https://github.com/dgrine/Argo.git
+```
 
-## Integration
+Alternatively, you can [download the latest archive](...) directly.
 
-Since Argo consists of just a single header file without any external dependencies, no special building or installation steps are required. Simply make the header file available to your project.
+Next, add the `Argo/single_include` directory as an include directory to your compiler flags when compiling. For example, with Clang or GCC simply add the `-I</path/to/Argo>/single_include` flag.
 
-### Option 1: Simple
-
-For those wanting to start straight away: clone this repository (or if you're old school you can [download an archive](...) directly). Next, add the `Argo/single_include` directory as an include directory to your compiler flags. That's it! You can now include Argo in your C++ projects:
+That's it! You can now include Argo in your C++ projects:
 
 ```C++
 #include "argo/Argo.hpp"
 ```
 
-### Option 2: CMake
+## CMake integration
 
 #### Using Git submodules
 
-When adding the Argo repository as a Git submodule, it suffices to add the Argo repository as a subdirectory in your project:
+If your project makes use of Git submodules, you can simply add the Argo repository as a subdirectory in your `CMakeLists.txt`:
 
 ```CMake
 add_subdirectory(argo)
@@ -101,7 +93,7 @@ __Note__ If required, you can also build Argo as a static library by setting `AR
 
 #### Using ExternalProject_Add
 
-Alternatively, a pure CMake integration is also possible via CMake's `ExternalProject_Add`:
+The following shows integration via CMake's `ExternalProject_Add` command:
 
 ```CMake
 cmake_minimum_required(VERSION 3.5)
@@ -124,9 +116,13 @@ set(ARGO_ROOT ${SOURCE_DIR})
 
 add_executable(app main.cpp)
 add_dependencies(app Argo)
-#set_target_properties(app PROPERTIES CXX_STANDARD 11) #Your project should be C++ >= 11
+set_target_properties(app PROPERTIES CXX_STANDARD 11) #Your project should be C++ >= 11
 target_include_directories(app PRIVATE ${ARGO_ROOT}/single_include)
 ```
+
+## Getting started
+
+Check out the [documentation](https://dgrine.github.io/) to get started.
 
 ## MIT License
 

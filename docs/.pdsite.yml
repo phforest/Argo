@@ -1,0 +1,12 @@
+# pdsite configuration
+
+theme: default
+inputextension: .md
+outputfolder: .html
+
+# Site-wide template variables
+
+sitename: "Argo"
+pagetitle-suffix: "Argo Documentation"
+footer: ""
+

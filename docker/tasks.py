@@ -24,9 +24,9 @@ def list(context):
             print("* {} / {}".format(system, compiler))
 
 @task
-def verify(context, platform = None):
+def test(context, platform = None):
     """
-    Verifies the library on different platforms.
+    Tests the library on different platforms.
     """
     with context.cd(str(THIS_DIR)):
         for fn in fn_dockers:
